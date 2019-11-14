@@ -11,4 +11,4 @@ api.add_namespace(auth)
 app = Flask(__name__)
 app.register_blueprint(blueprint)
 
-app.run(debug=True)
+app.run()
