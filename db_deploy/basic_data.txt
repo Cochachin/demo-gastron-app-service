@@ -1,0 +1,39 @@
+db.getCollection('restaurant').insert({
+    "name":"rustica", 
+    "address": "Av. República de venezuela 930", 
+    "region": "Lima",
+    "district": "Breña",
+    "ranking": 0,
+    "open_close": "Abierto las 24 horas",
+    "comment_negative": 0,
+    "comment_positive": 0})
+
+db.getCollection('restaurant').insert({
+    "name":"Cebichería El Mordisco", 
+    "address": "Av. Petit Thouars 2641-2631-2601", 
+    "region": "Lima",
+    "district": "Lince",
+    "ranking": 0,
+    "open_close": "Abierto hasta las 3pm",
+    "comment_negative": 0,
+    "comment_positive": 0})
+    
+db.getCollection('restaurant').insert({
+    "name":"Chifa El Dorado", 
+    "address": "Av. Arequipa 2450", 
+    "region": "Lima",
+    "district": "Lince",
+    "ranking": 0,
+    "open_close": "Abierto las 24 horas",
+    "comment_negative": 0,
+    "comment_positive": 0})
+
+db.getCollection('restaurant').insert({
+    "name":"Pollos Hilton", 
+    "address": "Av. Julio Cesar Tello", 
+    "region": "Lima",
+    "district": "Lince",
+    "ranking": 0,
+    "open_close": "Abierto las 24 horas",
+    "comment_negative": 0,
+    "comment_positive": 0})
