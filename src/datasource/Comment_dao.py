@@ -11,15 +11,49 @@ class Comment_dao:
         comment_db = self.mongodb.db.comment
         #tempList = restaurant_db.find({})
     
-    def createComment(self, request):
+    def createRepliesComment(self, request):
+        comment = Comment(None)
         comment_db = self.mongodb.db.comment
+        person_db = self.mongodb.db.person
+        person = person_db.find_one({"user_id":uuid.UUID(request["user_id"])})
         id = uuid.uuid1()
         temp = {
                     "_id": id,
                     "created_at":datetime.datetime.now(),
                     "message": request["message"], 
                     "restaurant_id": request["restaurant_id"],
-                    "user_id": uuid.UUID(request["user_id"]),
+                    "type": "replies",
+                    "user": {
+                        "fullnames": person["fullnames"],
+                        "surnames": person["surnames"],
+                        "phone": person["phone"],
+                        "user_id": uuid.UUID(request["user_id"])
+                    },
+                    "comment_replay": []
+                }
+        comment_db.insert_one(temp)
+        return Comment(temp)
+    
+    def createComment(self, request, flag):
+        comment = Comment(None)
+        typeComment = comment.getTypeCommment(flag)
+        comment_db = self.mongodb.db.comment
+        person_db = self.mongodb.db.person
+        person = person_db.find_one({"user_id":uuid.UUID(request["user_id"])})
+        print(person)
+        id = uuid.uuid1()
+        temp = {
+                    "_id": id,
+                    "created_at":datetime.datetime.now(),
+                    "message": request["message"], 
+                    "restaurant_id": request["restaurant_id"],
+                    "type": typeComment,
+                    "user": {
+                        "fullnames": person["fullnames"],
+                        "surnames": person["surnames"],
+                        "phone": person["phone"],
+                        "user_id": uuid.UUID(request["user_id"])
+                    },
                     "comment_replay": []
                 }
         comment_db.insert_one(temp)

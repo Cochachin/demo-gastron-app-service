@@ -14,7 +14,8 @@ class HelperPassword:
     @staticmethod
     def bcryptCheckPw(password, hashed):
         code = password.encode()
-        if bcrypt.hashpw(code, hashed):
+        print(bcrypt.checkpw(code, hashed), "hello")
+        if bcrypt.checkpw(code, hashed) is True:
             return True
         else:
             return False

@@ -25,11 +25,18 @@ class SchemaRestaurantDto:
         'errorList':fields.List(fields.Nested(error))
     })
     
+    person = restaurant.model('person', {
+        'fullName':fields.String(required=True, description='user fullname'),
+        'sureName':fields.String(required=True, description='user surnames'),
+        'phone':fields.String(required=True, description='user phone'),
+        'user_id':fields.String(required=True, description='user id')
+    })
+    
     other_commment = restaurant.model('other_commment', {
         'id':fields.String(description='user name'),
         'message':fields.String(required=True, description='user name'),
         'restaurant_id':fields.String(required=True, description='restaurant comment'),
-        'user_id':fields.String(required=True, description='user comment')
+        'user': fields.Nested(person)
     })
     
     comment = restaurant.model('comment', {
@@ -37,6 +44,7 @@ class SchemaRestaurantDto:
         'message':fields.String(required=True, description='user name'),
         'restaurant_id':fields.String(required=True, description='restaurant comment'),
         'user_id':fields.String(required=True, description='user comment'),
+        'user': fields.Nested(person),
         'comment_replay': fields.List(fields.Nested(other_commment))
     })
     

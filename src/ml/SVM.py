@@ -1,6 +1,7 @@
 import pickle
 from os.path import join, dirname, realpath
 from gensim.models import word2vec
+#from ..models.constant.Constant import Constant
 import gensim
 from sklearn import svm
 import numpy as np
@@ -24,7 +25,8 @@ class SVM:
     
     def rateComment(self, document):
         data = []
-        vector_dim = self.getFV(document)
+        tempDocument = document.lower()
+        vector_dim = self.getFV(tempDocument)
         data.append(vector_dim)
         result = self.model_svm.predict(data)
         return result[0]

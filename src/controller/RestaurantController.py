@@ -55,7 +55,7 @@ class RestaurantCommenstController(Resource):
         rest_data = restaurant_dao.getRestaurant(comment_data["restaurant_id"])
         rest_data = rest_data.generateRanking(rest_data, flag)
         restaurant_dao.updateRestaurant(rest_data)
-        temp = comment_dao.createComment(comment_data)
+        temp = comment_dao.createComment(comment_data, flag)
         response.setComment(temp)
         return response
     
@@ -69,3 +69,23 @@ class RestaurantCommenstController(Resource):
         temp = comment_dao.getComements(restaurant_id)
         response.setComment(temp)
         return response
+
+@restaurant.route('/comments/replies')
+@restaurant.doc(parser=parser)
+class RestaurantCommenstController(Resource):
+    @restaurant.expect(comment, validate=True)
+    @restaurant.response(200, 'ok')
+    @restaurant.marshal_with(comment_response)
+    def post(self):
+        try:
+            comment_data = request.json
+            response = CommentResponse(Constant.state_ok, Constant.ok)
+            comment_dao = Comment_dao()
+            temp = comment_dao.createComment(comment_data)
+            response.setComment(temp)
+        except:
+            response.state = Constant.state_aplication
+            response.message = Constant.error_application
+                
+        return response
+            

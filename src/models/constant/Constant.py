@@ -12,3 +12,5 @@ class Constant:
     RANKING_5 = 6250  #nivel 5
     COMMENT_NEGATIVE = 0
     COMMENT_POSITIVE = 1
+    COMMENT_NEGATIVE_TEXT = "negativo"
+    COMMENT_POSITIVE_TEXT = "positivo"
