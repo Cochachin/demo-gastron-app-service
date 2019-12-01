@@ -45,6 +45,7 @@ class SchemaAuthDto:
         'fullName':fields.String(required=True, description='user fullname'),
         'sureName':fields.String(required=True, description='user surnames'),
         'phone':fields.String(required=True, description='user phone'),
+        'email': fields.String(required=True, description='user phone'),
         'user_id':fields.String(required=True, description='user id')
     })
     

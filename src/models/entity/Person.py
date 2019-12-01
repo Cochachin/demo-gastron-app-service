@@ -4,4 +4,5 @@ class Person:
         self.sureName = data["surnames"]
         self.phone = data["phone"]
         self.user_id = data["user_id"]
+        self.email = data["email"]
     

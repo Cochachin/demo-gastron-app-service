@@ -21,6 +21,7 @@ class User_dao:
                     {"_id": uuid.uuid1(), "fullnames": request["fullnames"], 
                      "surnames": request["surnames"],
                      "user_id": id,
+                     "email": request["email"],
                      "phone": request["phone"]})
         
     def getUserByEmail(self, email):

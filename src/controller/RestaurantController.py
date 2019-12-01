@@ -4,6 +4,7 @@ from flask_restplus import Namespace, Resource, fields, reqparse
 from ..models.dto.SchemaRestaurantDto import SchemaRestaurantDto
 from ..datasource.Restaurant_dao import Restaurant_dao
 from ..datasource.Comment_dao import Comment_dao
+from ..datasource.Comment_replay_dao import Comment_replay_dao
 from ..models.dto.RestaurantResponse import RestaurantResponse
 from ..models.dto.CommentResponse import CommentResponse
 from ..models.constant.Constant import Constant
@@ -14,6 +15,8 @@ restaurant_response = SchemaRestaurantDto.restaurant_response
 comment_response = SchemaRestaurantDto.comment_response
 comment_list_response = SchemaRestaurantDto.comment_list_response
 comment = SchemaRestaurantDto.comment
+replay = SchemaRestaurantDto.replay
+replay_response = SchemaRestaurantDto.replay_response
 
 parser = reqparse.RequestParser()
 parser.add_argument('Authorization', type=str, location='headers', help='Access token', required=True)
@@ -73,15 +76,16 @@ class RestaurantCommenstController(Resource):
 @restaurant.route('/comments/replies')
 @restaurant.doc(parser=parser)
 class RestaurantCommenstController(Resource):
-    @restaurant.expect(comment, validate=True)
+    @restaurant.expect(replay, validate=True)
     @restaurant.response(200, 'ok')
-    @restaurant.marshal_with(comment_response)
+    @restaurant.marshal_with(replay_response)
     def post(self):
         try:
             comment_data = request.json
+            print(comment_data);
             response = CommentResponse(Constant.state_ok, Constant.ok)
-            comment_dao = Comment_dao()
-            temp = comment_dao.createComment(comment_data)
+            comment_replay_dao = Comment_replay_dao()
+            temp = comment_replay_dao.createRepliesComment(comment_data)
             response.setComment(temp)
         except:
             response.state = Constant.state_aplication
