@@ -82,7 +82,6 @@ class RestaurantCommenstController(Resource):
     def post(self):
         try:
             comment_data = request.json
-            print(comment_data);
             response = CommentResponse(Constant.state_ok, Constant.ok)
             comment_replay_dao = Comment_replay_dao()
             temp = comment_replay_dao.createRepliesComment(comment_data)

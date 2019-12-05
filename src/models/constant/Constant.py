@@ -13,4 +13,4 @@ class Constant:
     COMMENT_NEGATIVE = 0
     COMMENT_POSITIVE = 1
     COMMENT_NEGATIVE_TEXT = "negativo"
-    COMMENT_POSITIVE_TEXT = "positivo"
+    COMMENT_POSITIVE_TEXT = "positivo"  

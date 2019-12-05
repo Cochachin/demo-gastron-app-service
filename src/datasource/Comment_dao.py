@@ -41,10 +41,10 @@ class Comment_dao:
         comment_db = self.mongodb.db.comment
         comment_replay_db = self.mongodb.db.comment_replay
         
-        tempList = comment_db.find({"restaurant_id": ObjectId(restaurant_id)})
+        tempList = comment_db.find({"restaurant_id": ObjectId(restaurant_id)}).sort([("created_at", -1)])
         for item in tempList:
             temp = Comment(item)
-            list_1 =  comment_replay_db.find({"comment_id": temp.id})
+            list_1 =  comment_replay_db.find({"comment_id": temp.id}).sort([("created_at", -1)])
             replay_list = []
             for item_1 in list_1:
                 replay = Comment_replay(item_1)

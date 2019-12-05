@@ -59,6 +59,12 @@ class SchemaRestaurantDto:
         'comment_id': fields.String(required=True, description='user comment')
     })
     
+    replay_data = restaurant.model('replay_data', {
+        'message': fields.String(required=True, description='user name'),
+        'comment_id': fields.String(required=True, description='user comment'),
+        'user': fields.Nested(person)
+    })
+    
     comment_response = restaurant.model('comment_response', {
         'state':fields.Integer(required=True, description='user name'),
         'message':fields.String(required=True, description='user surname'),
@@ -67,10 +73,11 @@ class SchemaRestaurantDto:
     })
     
     replay_response = restaurant.model('replay', {
-        'comment_id': fields.String(required=True, description='user comment'),
-        'id':fields.String(description='user name'),
-        'message':fields.String(required=True, description='user name'),
-        'user': fields.Nested(person),
+        'state':fields.Integer(required=True, description='user name'),
+        'message':fields.String(required=True, description='user surname'),
+        'data': fields.Nested(replay_data),
+        'errorList':fields.List(fields.Nested(error))
+        
     })
     
     comment_list_response = restaurant.model('comment_list_response', {
