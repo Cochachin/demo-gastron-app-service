@@ -37,3 +37,73 @@ db.getCollection('restaurant').insert({
     "open_close": "Abierto las 24 horas",
     "comment_negative": 0,
     "comment_positive": 0})
+
+db.getCollection('restaurant').insert({
+    "name":"Chifa Fusión", 
+    "address": "Av. La Mar 2272", 
+    "region": "Lima",
+    "district": "San Miguel",
+    "ranking": 0,
+    "open_close": "Abierto las 23 horas",
+    "comment_negative": 0,
+    "comment_positive": 0})
+
+db.getCollection('restaurant').insert({
+    "name":"Restaurante Panchita", 
+    "address": "Av. Pedro Canga", 
+    "region": "Lima",
+    "district": "San Miguel",
+    "ranking": 0,
+    "open_close": "Abierto las 22 horas",
+    "comment_negative": 0,
+    "comment_positive": 0})
+
+db.getCollection('restaurant').insert({
+    "name":"Polleria Gusi", 
+    "address": "Av. Micolas Dueñas 262",
+    "region": "Lima",
+    "district": "Cercado de Lima",
+    "ranking": 0,
+    "open_close": "Abierto las 22 horas",
+    "comment_negative": 0,
+    "comment_positive": 0})
+
+db.getCollection('restaurant').insert({
+    "name":"Pardos Chiken", 
+    "address": "Av. Marina 22238",
+    "region": "Lima",
+    "district": "San Miguel",
+    "ranking": 0,
+    "open_close": "Abierto las 22 horas",
+    "comment_negative": 0,
+    "comment_positive": 0})
+
+db.getCollection('restaurant').insert({
+    "name":"Cevicheria Pedrito", 
+    "address": "Jr. Echenique 795",
+    "region": "Lima",
+    "district": "Magdalena del Mar",
+    "ranking": 0,
+    "open_close": "Abierto las 7pm",
+    "comment_negative": 0,
+    "comment_positive": 0})
+
+db.getCollection('restaurant').insert({
+    "name":"Pollos Techi", 
+    "address": "Calle 39",
+    "region": "Lima",
+    "district": "Bellavista",
+    "ranking": 0,
+    "open_close": "Abierto desde 12pm hasta 7pm",
+    "comment_negative": 0,
+    "comment_positive": 0})
+
+db.getCollection('restaurant').insert({
+    "name":"Chifa Hua Mei", 
+    "address": "Av. La Mariva 2609",
+    "region": "Lima",
+    "district": "San Miguel",
+    "ranking": 0,
+    "open_close": "Abierto desde 11am hasta 11pm",
+    "comment_negative": 0,
+    "comment_positive": 0})
